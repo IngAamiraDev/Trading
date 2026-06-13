@@ -1,0 +1,21 @@
+Ticker,Score,RS,Breakout %,52W High %,Vol Dry-Up,EMA21
+COCO,100.0,29.35,2.36,2.31,True,True
+SNDK,100.0,163.24,0.72,0.71,True,True
+MCB,85.0,-5.71,0.01,1.42,True,True
+TGTX,80.0,54.33,2.61,2.55,False,True
+CASY,80.0,35.68,1.26,1.25,False,True
+ATEX,80.0,199.46,1.18,1.17,False,True
+PDFS,80.0,111.0,0.67,0.67,False,True
+CRS,80.0,58.74,0.25,0.25,False,True
+GEO,80.0,74.43,0.94,0.93,False,True
+SNEX,80.0,64.77,1.11,1.1,False,True
+VPG,80.0,160.98,0.37,0.37,False,True
+CXW,80.0,36.3,1.64,1.61,False,True
+CHEF,80.0,32.37,0.12,0.12,False,True
+LQDA,80.0,46.33,1.2,1.19,False,True
+VIRT,80.0,39.0,1.53,1.51,False,True
+VVX,80.0,28.33,1.69,1.66,False,True
+MOG-A,80.0,18.08,0.11,0.11,False,True
+DAVE,80.0,60.61,2.97,2.88,False,True
+LRCX,80.0,50.45,0.63,0.63,False,True
+LGND,80.0,20.74,1.57,1.55,False,True

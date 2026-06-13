@@ -1,0 +1,2 @@
+time,symbol,signal,result
+2025-08-31 18:12:39.922132,EURUSD,SELL,"OrderSendResult(retcode=10027, deal=0, order=0, volume=0.0, price=0.0, bid=0.0, ask=0.0, comment='AutoTrading disabled by client', request_id=0, retcode_external=0, request=TradeRequest(action=1, magic=1001, order=0, symbol='EURUSD', volume=0.1, price=1.16887, stoplimit=0.0, sl=0.0, tp=0.0, deviation=10, type=1, type_filling=1, type_time=0, expiration=0, comment='MA_RSI_Bot', position=0, position_by=0))"
