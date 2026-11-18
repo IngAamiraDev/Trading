@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-17T14:33:19.011095",
+  "regime": "risk_off",
+  "vix": 25.59000015258789,
+  "capital": 10000.0,
+  "modes": {
+    "swing": {
+      "candidates": 25,
+      "actionable": 0,
+      "watchlist": 2,
+      "errors": [],
+      "notes": [
+        "Se eliminó 1 duplicado entre presets."
+      ]
+    },
+    "invest": {
+      "candidates": 25,
+      "actionable": 0,
+      "watchlist": 11,
+      "errors": [],
+      "notes": []
+    },
+    "day": {
+      "candidates": 16,
+      "actionable": 0,
+      "watchlist": 0,
+      "errors": [],
+      "notes": [
+        "El preset strong_up_trend_1 no devolvió resultados."
+      ]
+    }
+  }
+}
