@@ -4,21 +4,35 @@ Sistema de apoyo a decisiones para acciones de EE. UU. No ejecuta órdenes.
 No es una reproducción oficial del método privado de El Club de Inversionistas
 (CDI); es una implementación configurable de sus tres pilares públicos.
 
-## 1. Los tres pilares
+## 1. Las tres preguntas
 
-Un setup es **AAA** solo si cumple los tres. La puntuación ordena candidatos,
-pero no compensa un pilar fallido.
+AAA se lee de arriba abajo, en este orden. Si una pregunta falla, no hay setup.
 
-### A1. Alineación
+1. **Mercado**: ¿está alcista, bajista o lateral? Se lee de SPY y QQQ contra
+   SMA50 y SMA200. El VIX decide el riesgo permitido, no la dirección.
+2. **Sector**: ¿el grupo al que pertenece la acción aguanta? ETF del sector
+   contra SMA50/SMA200 y su fuerza relativa frente a SPY.
+3. **Acción frente a su propio sector**: ¿la acción lidera a su sector o solo
+   sube con él? Fuerza relativa de la acción contra el ETF de su sector a 1 y 3
+   meses.
 
-- Mercado: SPY y QQQ por encima de SMA50 y SMA200.
+Un setup es **AAA** solo si cumple las tres puertas. La puntuación ordena
+candidatos, pero no compensa un pilar fallido.
+
+### A1. Mercado y sector
+
+- Mercado: SPY y QQQ por encima de SMA50 y SMA200; tendencia distinta de
+  bajista.
 - Sector: ETF del sector por encima de SMA50/SMA200 y con fuerza relativa
   positiva frente a SPY.
 - Acción: precio > SMA50 > SMA200 y pendiente positiva de SMA200.
 
-### A2. Fortaleza relativa y momentum
+### A2. Acción frente a SPY y a su sector
 
 - Fuerza relativa positiva vs SPY en 1 y 3 meses.
+- Fuerza relativa positiva vs el ETF de su sector a 1 mes (puerta configurable
+  con `require_sector_rs`, activada por defecto). Si el run no trae datos del
+  sector, esta condición no penaliza.
 - A ≤15% del máximo de 52 semanas.
 - Volumen relativo ≥1.5 en la ruptura.
 - Proxy de Momentum List / CAN SLIM: crecimiento de EPS y ventas, ROE,
@@ -41,7 +55,11 @@ pero no compensa un pilar fallido.
 | Índices sobre SMA50 pero no sobre SMA200 | Neutral: solo A+ y media posición |
 | Índices bajo SMA50 o VIX ≥ 25 | Risk-off: no abrir nuevos largos |
 
-El régimen se evalúa una vez por sesión y se escribe en el reporte.
+La **tendencia** (alcista/lateral/bajista) sale de la estructura de los índices:
+alcista si todos están sobre SMA50 y SMA200; bajista si todos perdieron SMA200;
+lateral en el resto. Es independiente del régimen: el régimen mide cuánto riesgo
+se permite, la tendencia mide hacia dónde va el mercado. Ambos se evalúan una
+vez por sesión y se escriben en el reporte.
 
 ## 3. Universo
 

@@ -112,6 +112,7 @@ def _scan_mode(
         meta = _meta_from_row(row, str(row.get("preset", "")))
         try:
             fundamentals = fetch_fundamentals(ticker, ttl_minutes=ttl)
+            sector = sector_context(meta.get("sector", ""), sector_data, spy)
             if mode == "day":
                 daily = download(ticker, period="3mo")
                 intraday = download(
@@ -126,15 +127,22 @@ def _scan_mode(
                     fundamentals,
                     config,
                     regime,
+                    sector,
                 )
             elif mode == "invest":
                 daily = download(ticker, period="2y")
                 candidate = evaluate_invest(
-                    ticker, meta, daily, spy, fundamentals, config, regime
+                    ticker,
+                    meta,
+                    daily,
+                    spy,
+                    fundamentals,
+                    config,
+                    regime,
+                    sector,
                 )
             else:
                 daily = download(ticker, period="2y")
-                sector = sector_context(meta.get("sector", ""), sector_data, spy)
                 candidate = evaluate_swing(
                     ticker,
                     meta,
@@ -157,7 +165,7 @@ def _scan_mode(
 
 
 def _print_summary(results: dict[str, ScanResult], regime: Regime) -> None:
-    print(f"Regimen: {regime.label} | VIX: {regime.vix}")
+    print(f"Regimen: {regime.label} | Tendencia: {regime.trend} | VIX: {regime.vix}")
     if regime.leaders:
         print("Sectores líderes: " + ", ".join(regime.leaders))
     for mode, result in results.items():
@@ -195,23 +203,40 @@ def _review(
     }
     candidates: list[Candidate] = []
     modes = [mode] if mode else list(MODES)
+    sector = sector_context(meta.get("sector", ""), sector_data, spy)
     for current in modes:
         if current == "day":
             daily = download(ticker, period="3mo")
             intraday = download(ticker, period="5d", interval="5m", prepost=True)
             candidates.append(
                 evaluate_day(
-                    ticker, meta, daily, intraday, spy, fundamentals, config, regime
+                    ticker,
+                    meta,
+                    daily,
+                    intraday,
+                    spy,
+                    fundamentals,
+                    config,
+                    regime,
+                    sector,
                 )
             )
         elif current == "invest":
             daily = download(ticker, period="2y")
             candidates.append(
-                evaluate_invest(ticker, meta, daily, spy, fundamentals, config, regime)
+                evaluate_invest(
+                    ticker,
+                    meta,
+                    daily,
+                    spy,
+                    fundamentals,
+                    config,
+                    regime,
+                    sector,
+                )
             )
         else:
             daily = download(ticker, period="2y")
-            sector = sector_context(meta.get("sector", ""), sector_data, spy)
             candidates.append(
                 evaluate_swing(
                     ticker, meta, daily, spy, sector, fundamentals, config, regime
@@ -230,7 +255,7 @@ def main(argv: list[str] | None = None) -> int:
 
     print("Calculando régimen de mercado...")
     regime = compute_regime(config)
-    print(f"Regimen: {regime.label} | VIX: {regime.vix}")
+    print(f"Regimen: {regime.label} | Tendencia: {regime.trend} | VIX: {regime.vix}")
     spy = download("SPY", period="2y")
 
     results: dict[str, ScanResult] = {}
@@ -259,10 +284,11 @@ def main(argv: list[str] | None = None) -> int:
             budget = risk_budget(config, capital)
             paths = write_reports(results, regime, config, budget, args.output)
             print(f"\nReporte: {paths['plan']}")
+            print(f"JSON: {paths['json']}")
         return 0
 
     modes = list(MODES) if args.command == "plan" else [args.mode or "swing"]
-    sector_data = load_sector_data() if "swing" in modes else {}
+    sector_data = load_sector_data()
 
     for mode in modes:
         print(f"\nEscaneando {mode}...")
@@ -280,6 +306,7 @@ def main(argv: list[str] | None = None) -> int:
         paths = write_reports(results, regime, config, budget, args.output)
         print(f"\nReporte: {paths['plan']}")
         print(f"CSV: {paths['csv']}")
+        print(f"JSON: {paths['json']}")
         print(f"Watchlist: {paths['watchlist']}")
     return 0
 

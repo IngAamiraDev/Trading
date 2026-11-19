@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from datetime import datetime, timedelta
@@ -273,6 +274,20 @@ class RiskTests(unittest.TestCase):
         self.assertEqual(len([c for c in ordered if c.selected]), 2)
 
 
+class RegimeTests(unittest.TestCase):
+    def test_trend_from_index_structure(self):
+        self.assertEqual(risk_on().trend, "alcista")
+        lateral = risk_on()
+        lateral.indices["QQQ"]["above_slow"] = False
+        self.assertEqual(lateral.trend, "lateral")
+        bearish = risk_on()
+        for data in bearish.indices.values():
+            data["above_fast"] = False
+            data["above_slow"] = False
+        self.assertEqual(bearish.trend, "bajista")
+        self.assertEqual(Regime(label="neutral").trend, "sin datos")
+
+
 class SwingTests(unittest.TestCase):
     def test_breakout_is_aaa(self):
         candidate = evaluate_swing(
@@ -324,6 +339,61 @@ class SwingTests(unittest.TestCase):
         self.assertFalse(candidate.gates["A3"])
         self.assertEqual(candidate.status, "Descartado")
 
+    def test_weak_vs_sector_fails_strength(self):
+        sector_frame = make_sector()
+        sector_frame["Close"] = np.linspace(100, 260, len(sector_frame))
+        candidate = evaluate_swing(
+            "TEST",
+            {"company": "Test", "sector": "Technology", "industry": "Software", "market_cap": 5e10},
+            make_daily(),
+            make_spy(),
+            {"etf": "XLK", "aligned": True, "rs21": 3.0, "frame": sector_frame},
+            good_fundamentals(),
+            base_config(),
+            risk_on(),
+        )
+        self.assertLess(candidate.metrics["rs_sector21"], 0)
+        self.assertFalse(candidate.gates["A2"])
+        self.assertNotEqual(candidate.status, "AAA listo")
+
+    def test_strong_vs_sector_passes_strength(self):
+        sector_frame = make_sector()
+        sector_frame["Close"] = np.linspace(100, 104, len(sector_frame))
+        candidate = evaluate_swing(
+            "TEST",
+            {"company": "Test", "sector": "Technology", "industry": "Software", "market_cap": 5e10},
+            make_daily(),
+            make_spy(),
+            {"etf": "XLK", "aligned": True, "rs21": 3.0, "frame": sector_frame},
+            good_fundamentals(),
+            base_config(),
+            risk_on(),
+        )
+        self.assertGreater(candidate.metrics["rs_sector21"], 0)
+        self.assertTrue(candidate.gates["A2"])
+        self.assertEqual(candidate.status, "AAA listo")
+
+    def test_corrupt_series_blocks_relative_strength(self):
+        daily = make_daily()
+        # Salto extremo tipo split: la RS deja de ser comparable.
+        daily.loc[daily.index[-1], "Close"] = daily["Close"].iloc[-2] * 4
+        candidate = evaluate_swing(
+            "TEST",
+            {"company": "Test", "sector": "Technology", "industry": "Software", "market_cap": 5e10},
+            daily,
+            make_spy(),
+            {"etf": "XLK", "aligned": True, "rs21": 3.0},
+            good_fundamentals(),
+            base_config(),
+            risk_on(),
+        )
+        self.assertIsNone(candidate.metrics["rs21"])
+        self.assertIsNone(candidate.metrics["rs_sector21"])
+        self.assertFalse(candidate.gates["A2"])
+        self.assertTrue(
+            any("salto extremo" in reason for reason in candidate.reasons)
+        )
+
 
 class InvestTests(unittest.TestCase):
     def test_quality_core(self):
@@ -367,6 +437,36 @@ class InvestTests(unittest.TestCase):
         )
         self.assertFalse(candidate.gates["A2"])
         self.assertEqual(candidate.status, "Reject")
+
+    def test_sector_context_is_reported(self):
+        sector_frame = make_sector()
+        sector_frame["Close"] = np.linspace(100, 104, len(sector_frame))
+        candidate = evaluate_invest(
+            "TEST",
+            {"company": "Test", "sector": "Technology", "industry": "Software", "market_cap": 5e10},
+            make_daily(),
+            make_spy(),
+            good_fundamentals(),
+            base_config(),
+            risk_on(),
+            {"etf": "XLK", "aligned": True, "state": "fuerte", "rs21": 3.0, "frame": sector_frame},
+        )
+        self.assertEqual(candidate.metrics["sector_etf"], "XLK")
+        self.assertEqual(candidate.metrics["sector_state"], "fuerte")
+        self.assertGreater(candidate.metrics["rs_sector21"], 0)
+
+    def test_weak_sector_breaks_alignment(self):
+        candidate = evaluate_invest(
+            "TEST",
+            {"company": "Test", "sector": "Technology", "industry": "Software", "market_cap": 5e10},
+            make_daily(),
+            make_spy(),
+            good_fundamentals(),
+            base_config(),
+            risk_on(),
+            {"etf": "XLK", "aligned": False, "state": "débil", "rs21": -2.0},
+        )
+        self.assertFalse(candidate.gates["A1"])
 
 
 def make_intraday() -> pd.DataFrame:
@@ -429,6 +529,26 @@ class DayTests(unittest.TestCase):
         self.assertTrue(candidate.gates["A3"])
         self.assertEqual(candidate.status, "Listo")
         self.assertGreaterEqual(candidate.score, 65)
+
+    def test_day_reports_sector_context(self):
+        sector_frame = make_sector()
+        sector_frame["Close"] = np.linspace(100, 104, len(sector_frame))
+        candidate = evaluate_day(
+            "TEST",
+            {"company": "Test", "sector": "Technology", "industry": "Software", "market_cap": 5e10},
+            make_daily(),
+            make_intraday(),
+            make_spy(),
+            good_fundamentals(),
+            self.day_config(),
+            risk_on(),
+            {"etf": "XLK", "aligned": True, "state": "fuerte", "rs21": 3.0, "frame": sector_frame},
+        )
+        self.assertEqual(candidate.metrics["sector_etf"], "XLK")
+        self.assertEqual(candidate.metrics["sector_state"], "fuerte")
+        self.assertTrue(
+            any("XLK" in reason for reason in candidate.reasons),
+        )
 
     def test_small_gap_not_ready(self):
         frame = make_intraday()
@@ -499,6 +619,7 @@ class ReportTests(unittest.TestCase):
             )
             self.assertTrue(paths["plan"].exists())
             self.assertTrue(paths["csv"].exists())
+            self.assertTrue(paths["json"].exists())
             self.assertTrue(paths["watchlist"].exists())
             self.assertTrue(paths["summary"].exists())
             text = paths["plan"].read_text(encoding="utf-8")
@@ -507,6 +628,32 @@ class ReportTests(unittest.TestCase):
             self.assertIn("## 1. Régimen de mercado", text)
             watchlist = paths["watchlist"].read_text(encoding="utf-8")
             self.assertIn("TEST", watchlist)
+            payload = json.loads(paths["json"].read_text(encoding="utf-8"))
+            self.assertEqual(payload["run_id"], json.loads(paths["summary"].read_text())["run_id"])
+            self.assertEqual(payload["candidates"][0]["ticker"], "TEST")
+            self.assertEqual(payload["candidates"][0]["mode"], "swing")
+            self.assertIn("A1", payload["candidates"][0]["gates"])
+            self.assertEqual(payload["regime"]["label"], "risk_on")
+
+    def test_candidate_payload_is_json_serializable(self):
+        candidate = Candidate(
+            ticker="TEST",
+            mode="swing",
+            status="AAA listo",
+            score=82.5,
+            entry=100.0,
+            stop=95.0,
+            target=112.5,
+            rr=2.5,
+            risk_pct=5.0,
+            gates={"A1": True, "A2": True, "A3": True},
+            reasons=["motivo"],
+            metrics={"bloques": {"alineación": 30.0}, "rs21": 4.2},
+        )
+        payload = candidate.to_payload()
+        self.assertEqual(payload["gates"]["A1"], True)
+        self.assertEqual(payload["reasons"], ["motivo"])
+        self.assertIsInstance(json.dumps(payload), str)
 
 
 if __name__ == "__main__":

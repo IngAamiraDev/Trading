@@ -1,5 +1,7 @@
 {
+  "run_id": "c28a7d7b-70f3-520e-b918-bed58b918bda",
   "generated_at": "2026-11-17T14:33:19.011095",
+  "trading_date": "2026-11-17",
   "regime": "risk_off",
   "vix": 25.59000015258789,
   "capital": 10000.0,

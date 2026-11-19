@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795006195377,
+      "tag": "0000_ordinary_black_bird",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795010150284,
+      "tag": "0001_add_run_trend",
+      "breakpoints": true
+    }
+  ]
+}

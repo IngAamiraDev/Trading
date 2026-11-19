@@ -40,6 +40,7 @@
     "min_rr": 2.0,
     "target_r": 2.5,
     "max_stop_pct": 8.0,
+    "require_sector_rs": true,
     "earnings_blackout_days": 5,
     "pivot_days": 20,
     "stop_lookback_days": 10,

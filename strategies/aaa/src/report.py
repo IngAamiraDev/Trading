@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import csv
 import json
-from datetime import datetime
+import math
+import uuid
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -47,6 +49,27 @@ def _block(metrics: dict[str, Any]) -> str:
     return " / ".join(f"{name[:3]} {value:g}" for name, value in blocks.items())
 
 
+def _json_safe(value: Any) -> Any:
+    """Convierte el resultado del motor en JSON estricto."""
+    if isinstance(value, dict):
+        return {str(key): _json_safe(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple, set)):
+        return [_json_safe(item) for item in value]
+    if isinstance(value, (datetime, date)):
+        return value.isoformat()
+    if isinstance(value, float):
+        if math.isnan(value) or math.isinf(value):
+            return None
+        return value
+    if isinstance(value, bool) or isinstance(value, (str, int)) or value is None:
+        return value
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+    return None if math.isnan(number) or math.isinf(number) else number
+
+
 def _regime_section(regime: Regime, config: dict[str, Any]) -> list[str]:
     label_map = {
         "risk_on": "Risk-on (se permiten setups AAA)",
@@ -54,6 +77,8 @@ def _regime_section(regime: Regime, config: dict[str, Any]) -> list[str]:
         "risk_off": "Risk-off (no abrir nuevos largos)",
     }
     lines = ["## 1. Régimen de mercado", ""]
+    lines.append(f"**Tendencia:** {regime.trend.capitalize()}")
+    lines.append("")
     lines.append(f"**Lectura:** {label_map.get(regime.label, regime.label)}")
     lines.append("")
     rows = []
@@ -370,6 +395,73 @@ def build_plan(
     return "\n".join(lines).rstrip() + "\n"
 
 
+def build_payload(
+    results: dict[str, ScanResult],
+    regime: Regime,
+    config: dict[str, Any],
+    budget: dict[str, Any],
+    generated_at: datetime | None = None,
+    run_id: str | None = None,
+    source: str = "cli",
+) -> dict[str, Any]:
+    """Construye el JSON estable que consume la web."""
+    stamp = generated_at or datetime.now()
+    identifier = run_id or str(uuid.uuid4())
+
+    candidates_payload: list[dict[str, Any]] = []
+    for mode in ("swing", "invest", "day"):
+        result = results.get(mode)
+        if not result:
+            continue
+        for candidate in sorted(result.candidates, key=lambda c: c.score, reverse=True):
+            candidates_payload.append(candidate.to_payload())
+
+    indices = {}
+    for symbol, data in regime.indices.items():
+        indices[symbol] = {
+            "close": data.get("close"),
+            "sma_fast": data.get("sma_fast"),
+            "sma_slow": data.get("sma_slow"),
+            "above_fast": data.get("above_fast"),
+            "above_slow": data.get("above_slow"),
+            "last_bar": data.get("last_bar"),
+            "error": data.get("error"),
+        }
+
+    errors = [error for result in results.values() for error in result.errors]
+    notes = [note for result in results.values() for note in result.notes]
+
+    payload = {
+        "run_id": identifier,
+        "generated_at": stamp.isoformat(),
+        "trading_date": stamp.strftime("%Y-%m-%d"),
+        "source": source,
+        "capital": budget.get("capital"),
+        "regime": {
+            "label": regime.label,
+            "trend": regime.trend,
+            "vix": regime.vix,
+            "indices": indices,
+            "leaders": list(regime.leaders),
+            "notes": list(regime.notes),
+        },
+        "modes": {
+            mode: {
+                "candidates": len(result.candidates),
+                "actionable": len(result.actionable),
+                "watchlist": len(result.watchlist),
+                "errors": list(result.errors),
+                "notes": list(result.notes),
+            }
+            for mode, result in results.items()
+        },
+        "errors": errors,
+        "notes": notes,
+        "candidates": candidates_payload,
+    }
+    return _json_safe(payload)
+
+
 def write_reports(
     results: dict[str, ScanResult],
     regime: Regime,
@@ -378,14 +470,27 @@ def write_reports(
     output_dir: str | Path | None = None,
     generated_at: datetime | None = None,
     notes: list[str] | None = None,
+    run_id: str | None = None,
+    source: str = "cli",
 ) -> dict[str, Path]:
     stamp = generated_at or datetime.now()
+    identifier = run_id or str(uuid.uuid4())
     directory = Path(output_dir) if output_dir else REPORTS_DIR / stamp.strftime("%Y-%m-%d")
     ensure_dir(directory)
 
     plan_path = directory / "plan.md"
     plan_path.write_text(
         build_plan(results, regime, config, budget, stamp, notes), encoding="utf-8"
+    )
+
+    payload = build_payload(
+        results,
+        regime,
+        config,
+        budget,
+        generated_at=stamp,
+        run_id=identifier,
+        source=source,
     )
 
     rows: list[dict[str, Any]] = []
@@ -403,6 +508,11 @@ def write_reports(
             writer.writeheader()
             writer.writerows(rows)
 
+    json_path = directory / "candidates.json"
+    json_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+
     watchlist = sorted(
         {
             candidate.ticker
@@ -415,20 +525,16 @@ def write_reports(
     watchlist_path.write_text("\n".join(watchlist) + ("\n" if watchlist else ""), encoding="utf-8")
 
     summary = {
+        "run_id": identifier,
         "generated_at": stamp.isoformat(),
+        "trading_date": payload["trading_date"],
         "regime": regime.label,
+        "trend": regime.trend,
         "vix": regime.vix,
         "capital": budget.get("capital"),
-        "modes": {
-            mode: {
-                "candidates": len(result.candidates),
-                "actionable": len(result.actionable),
-                "watchlist": len(result.watchlist),
-                "errors": result.errors,
-                "notes": result.notes,
-            }
-            for mode, result in results.items()
-        },
+        "modes": payload["modes"],
+        "errors": payload["errors"],
+        "notes": payload["notes"],
     }
     summary_path = directory / "summary.json"
     summary_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -437,6 +543,7 @@ def write_reports(
         "directory": directory,
         "plan": plan_path,
         "csv": csv_path,
+        "json": json_path,
         "watchlist": watchlist_path,
         "summary": summary_path,
     }

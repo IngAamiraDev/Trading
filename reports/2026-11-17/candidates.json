@@ -1,0 +1,2997 @@
+{
+  "run_id": "c28a7d7b-70f3-520e-b918-bed58b918bda",
+  "generated_at": "2026-11-17T14:33:19.011095",
+  "trading_date": "2026-11-17",
+  "source": "legacy-csv",
+  "capital": 10000.0,
+  "regime": {
+    "label": "risk_off",
+    "trend": "lateral",
+    "vix": 25.59000015258789,
+    "indices": {
+      "SPY": {
+        "close": 730.67,
+        "sma_fast": 762.85,
+        "sma_slow": 729.79,
+        "above_fast": false,
+        "above_slow": true,
+        "last_bar": null,
+        "error": null
+      },
+      "QQQ": {
+        "close": 653.82,
+        "sma_fast": 715.31,
+        "sma_slow": 681.56,
+        "above_fast": false,
+        "above_slow": false,
+        "last_bar": null,
+        "error": null
+      }
+    },
+    "leaders": [
+      "Utilities (+10.2 pp)",
+      "Healthcare (+10.1 pp)",
+      "Consumer Defensive (+9.9 pp)",
+      "Real Estate (+9.9 pp)"
+    ],
+    "notes": []
+  },
+  "modes": {
+    "swing": {
+      "candidates": 25,
+      "actionable": 0,
+      "watchlist": 2,
+      "errors": [],
+      "notes": [
+        "Se eliminó 1 duplicado entre presets."
+      ]
+    },
+    "invest": {
+      "candidates": 25,
+      "actionable": 0,
+      "watchlist": 11,
+      "errors": [],
+      "notes": []
+    },
+    "day": {
+      "candidates": 16,
+      "actionable": 0,
+      "watchlist": 0,
+      "errors": [],
+      "notes": [
+        "El preset strong_up_trend_1 no devolvió resultados."
+      ]
+    }
+  },
+  "errors": [],
+  "notes": [
+    "Se eliminó 1 duplicado entre presets.",
+    "El preset strong_up_trend_1 no devolvió resultados."
+  ],
+  "candidates": [
+    {
+      "mode": "swing",
+      "ticker": "ED",
+      "company": "Consolidated Edison Inc",
+      "sector": "Utilities",
+      "industry": "Utilities - Regulated Electric",
+      "status": "Vigilancia",
+      "score": 85.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "pullback",
+      "price": 120.1,
+      "entry": 120.1,
+      "stop": 116.91,
+      "target": 128.07,
+      "rr": 2.5,
+      "risk_pct": 2.66,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: pullback",
+        "RS 1m 14.2 pp vs SPY",
+        "RS 3m 16.0 pp vs SPY",
+        "A -2.2% del máximo 52s",
+        "RelVol 2.72",
+        "Stop 2.7%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "mercado risk-off: solo vigilancia, sin entrada"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 25.0,
+          "fortaleza": 38.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "IBN",
+      "company": "ICICI Bank Ltd ADR",
+      "sector": "Financial",
+      "industry": "Banks - Regional",
+      "status": "Descartado",
+      "score": 78.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "breakout",
+      "price": 34.85,
+      "entry": 35.03,
+      "stop": 33.86,
+      "target": 37.96,
+      "rr": 2.5,
+      "risk_pct": 3.34,
+      "shares": null,
+      "earnings": "2027-10-17",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_3",
+      "reasons": [
+        "Setup: breakout",
+        "RS 1m 22.9 pp vs SPY",
+        "RS 3m 23.1 pp vs SPY",
+        "A -0.6% del máximo 52s",
+        "RelVol 0.68",
+        "Stop 3.3%",
+        "R/R 2.5",
+        "earnings en 334 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 25.0,
+          "fortaleza": 32.0,
+          "entrada": 21.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "DIS",
+      "company": "Walt Disney Co",
+      "sector": "Communication Services",
+      "industry": "Entertainment",
+      "status": "Descartado",
+      "score": 76.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": false
+      },
+      "setup": "pullback",
+      "price": 117.69,
+      "entry": 117.69,
+      "stop": 113.79,
+      "target": 127.44,
+      "rr": 2.5,
+      "risk_pct": 3.31,
+      "shares": null,
+      "earnings": "2026-11-17",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: pullback",
+        "RS 1m 12.1 pp vs SPY",
+        "RS 3m 14.8 pp vs SPY",
+        "A -4.1% del máximo 52s",
+        "RelVol 2.15",
+        "Stop 3.3%",
+        "R/R 2.5",
+        "earnings en 0 días",
+        "A1: falla alineación (mercado, medias o sector)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 20.0,
+          "fortaleza": 34.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "ALRM",
+      "company": "Alarm.com Holdings Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Descartado",
+      "score": 75.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": false
+      },
+      "setup": "pullback",
+      "price": 66.7,
+      "entry": 66.7,
+      "stop": 63.66,
+      "target": 74.3,
+      "rr": 2.5,
+      "risk_pct": 4.56,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: pullback",
+        "RS 1m 20.8 pp vs SPY",
+        "RS 3m 21.0 pp vs SPY",
+        "A -3.9% del máximo 52s",
+        "RelVol 2.13",
+        "Stop 4.6%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 16.0,
+          "fortaleza": 40.0,
+          "entrada": 19.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "BILL",
+      "company": "BILL Holdings Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Vigilancia",
+      "score": 74.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "breakout",
+      "price": 64.21,
+      "entry": 64.21,
+      "stop": 60.08,
+      "target": 74.53,
+      "rr": 2.5,
+      "risk_pct": 6.43,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: breakout (extendido)",
+        "RS 1m 45.2 pp vs SPY",
+        "RS 3m 39.4 pp vs SPY",
+        "A -1.0% del máximo 52s",
+        "RelVol 5.25",
+        "Stop 6.4%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "mercado risk-off: solo vigilancia, sin entrada"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 16.0,
+          "fortaleza": 38.0,
+          "entrada": 20.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "VIK",
+      "company": "Viking Holdings Ltd",
+      "sector": "Consumer Cyclical",
+      "industry": "Travel Services",
+      "status": "Descartado",
+      "score": 69.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout",
+      "price": 93.48,
+      "entry": 93.48,
+      "stop": 87.83,
+      "target": 107.61,
+      "rr": 2.5,
+      "risk_pct": 6.04,
+      "shares": null,
+      "earnings": "2026-11-17",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "volumen_climatico",
+      "reasons": [
+        "Setup: breakout",
+        "RS 1m 15.9 pp vs SPY",
+        "RS 3m 7.7 pp vs SPY",
+        "A -15.1% del máximo 52s",
+        "RelVol 1.91",
+        "Stop 6.0%",
+        "R/R 2.5",
+        "earnings en 0 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 21.0,
+          "fortaleza": 28.0,
+          "entrada": 20.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "SLS",
+      "company": "SELLAS Life Sciences Group Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 68.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout",
+      "price": 19.61,
+      "entry": 19.61,
+      "stop": 16.41,
+      "target": 27.61,
+      "rr": 2.5,
+      "risk_pct": 16.32,
+      "shares": null,
+      "earnings": "2026-11-12",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: breakout (extendido)",
+        "RS 1m 91.6 pp vs SPY",
+        "RS 3m 46.3 pp vs SPY",
+        "A -21.2% del máximo 52s",
+        "RelVol 19.68",
+        "Stop 16.3%",
+        "R/R 2.5",
+        "earnings hace 5 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 21.0,
+          "fortaleza": 30.0,
+          "entrada": 17.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "KOF",
+      "company": "Coca-Cola Femsa SAB de CV ADR",
+      "sector": "Consumer Defensive",
+      "industry": "Beverages - Non-Alcoholic",
+      "status": "Descartado",
+      "score": 68.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 121.61,
+      "entry": 121.61,
+      "stop": 117.04,
+      "target": 133.03,
+      "rr": 2.5,
+      "risk_pct": 3.76,
+      "shares": null,
+      "earnings": "2027-10-27",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_3",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 6.0 pp vs SPY",
+        "RS 3m 13.2 pp vs SPY",
+        "A -1.0% del máximo 52s",
+        "RelVol 0.69",
+        "Stop 3.8%",
+        "R/R 2.5",
+        "earnings en 344 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 25.0,
+          "fortaleza": 32.0,
+          "entrada": 11.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "EXLS",
+      "company": "ExlService Holdings Inc",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "status": "Descartado",
+      "score": 66.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "pullback",
+      "price": 42.98,
+      "entry": 42.98,
+      "stop": 41.88,
+      "target": 45.73,
+      "rr": 2.5,
+      "risk_pct": 2.56,
+      "shares": null,
+      "earnings": "2027-10-27",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: pullback",
+        "RS 1m 12.8 pp vs SPY",
+        "RS 3m 20.9 pp vs SPY",
+        "A -3.1% del máximo 52s",
+        "RelVol 0.44",
+        "Stop 2.6%",
+        "R/R 2.5",
+        "earnings en 344 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 16.0,
+          "fortaleza": 32.0,
+          "entrada": 18.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "PLMR",
+      "company": "Palomar Holdings Inc",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "status": "Descartado",
+      "score": 65.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 159.47,
+      "entry": 159.47,
+      "stop": 150.94,
+      "target": 180.8,
+      "rr": 2.5,
+      "risk_pct": 5.35,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 20.4 pp vs SPY",
+        "RS 3m 30.4 pp vs SPY",
+        "A -1.8% del máximo 52s",
+        "RelVol 0.55",
+        "Stop 5.3%",
+        "R/R 2.5",
+        "earnings en 352 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 25.0,
+          "fortaleza": 32.0,
+          "entrada": 8.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "QTWO",
+      "company": "Q2 Holdings Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Descartado",
+      "score": 64.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "pullback",
+      "price": 71.24,
+      "entry": 71.24,
+      "stop": 70.08,
+      "target": 74.14,
+      "rr": 2.5,
+      "risk_pct": 1.63,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: pullback",
+        "RS 1m 19.2 pp vs SPY",
+        "RS 3m 15.9 pp vs SPY",
+        "A -6.7% del máximo 52s",
+        "RelVol 0.28",
+        "Stop 1.6%",
+        "R/R 2.5",
+        "earnings en 345 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 16.0,
+          "fortaleza": 30.0,
+          "entrada": 18.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "REGN",
+      "company": "Regeneron Pharmaceuticals Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 63.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 956.59,
+      "entry": 956.59,
+      "stop": 897.83,
+      "target": 1103.49,
+      "rr": 2.5,
+      "risk_pct": 6.14,
+      "shares": null,
+      "earnings": "2027-10-30",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 27.0 pp vs SPY",
+        "RS 3m 18.5 pp vs SPY",
+        "A -3.5% del máximo 52s",
+        "RelVol 0.56",
+        "Stop 6.1%",
+        "R/R 2.5",
+        "earnings en 347 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 25.0,
+          "fortaleza": 32.0,
+          "entrada": 6.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "CRBG",
+      "company": "Corebridge Financial Inc",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "status": "Descartado",
+      "score": 61.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 34.92,
+      "entry": 34.92,
+      "stop": 33.38,
+      "target": 38.77,
+      "rr": 2.5,
+      "risk_pct": 4.41,
+      "shares": null,
+      "earnings": "2027-11-02",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 6.1 pp vs SPY",
+        "RS 3m 12.7 pp vs SPY",
+        "A -4.9% del máximo 52s",
+        "RelVol 0.46",
+        "Stop 4.4%",
+        "R/R 2.5",
+        "earnings en 350 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 21.0,
+          "fortaleza": 32.0,
+          "entrada": 8.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "RYTM",
+      "company": "Rhythm Pharmaceuticals Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 60.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 116.66,
+      "entry": 116.66,
+      "stop": 104.99,
+      "target": 145.84,
+      "rr": 2.5,
+      "risk_pct": 10.0,
+      "shares": null,
+      "earnings": "2027-11-03",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 36.9 pp vs SPY",
+        "RS 3m 5.6 pp vs SPY",
+        "A -4.5% del máximo 52s",
+        "RelVol 2.47",
+        "Stop 10.0%",
+        "R/R 2.5",
+        "earnings en 351 días",
+        "A1: falla alineación (mercado, medias o sector)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 17.0,
+          "fortaleza": 36.0,
+          "entrada": 7.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "TOST",
+      "company": "Toast Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Descartado",
+      "score": 58.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "pullback",
+      "price": 33.93,
+      "entry": 33.93,
+      "stop": 33.0,
+      "target": 36.25,
+      "rr": 2.5,
+      "risk_pct": 2.74,
+      "shares": null,
+      "earnings": "2027-11-03",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: pullback",
+        "RS 1m 12.6 pp vs SPY",
+        "RS 3m 1.3 pp vs SPY",
+        "A -9.4% del máximo 52s",
+        "RelVol 0.39",
+        "Stop 2.7%",
+        "R/R 2.5",
+        "earnings en 351 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 12.0,
+          "fortaleza": 28.0,
+          "entrada": 18.0
+        }
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "GEN",
+      "company": "Gen Digital Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Descartado",
+      "score": 57.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 29.86,
+      "entry": 29.86,
+      "stop": 29.25,
+      "target": 31.38,
+      "rr": 2.5,
+      "risk_pct": 2.04,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 31.5 pp vs SPY",
+        "RS 3m 13.6 pp vs SPY",
+        "A -5.3% del máximo 52s",
+        "RelVol 0.61",
+        "Stop 2.0%",
+        "R/R 2.5",
+        "earnings en 345 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "MAX",
+      "company": "MediaAlpha Inc",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "status": "Descartado",
+      "score": 56.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 14.56,
+      "entry": 14.56,
+      "stop": 13.68,
+      "target": 16.76,
+      "rr": 2.5,
+      "risk_pct": 6.04,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 33.5 pp vs SPY",
+        "RS 3m 12.7 pp vs SPY",
+        "A -8.9% del máximo 52s",
+        "RelVol 0.31",
+        "Stop 6.0%",
+        "R/R 2.5",
+        "earnings en 345 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "TRUP",
+      "company": "Trupanion Inc",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "status": "Descartado",
+      "score": 55.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 36.73,
+      "entry": 36.73,
+      "stop": 33.86,
+      "target": 43.9,
+      "rr": 2.5,
+      "risk_pct": 7.81,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 38.2 pp vs SPY",
+        "RS 3m 22.9 pp vs SPY",
+        "A -5.5% del máximo 52s",
+        "RelVol 0.47",
+        "Stop 7.8%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "BSY",
+      "company": "Bentley Systems Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Descartado",
+      "score": 54.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 44.06,
+      "entry": 44.06,
+      "stop": 42.13,
+      "target": 48.89,
+      "rr": 2.5,
+      "risk_pct": 4.38,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 24.6 pp vs SPY",
+        "RS 3m 27.7 pp vs SPY",
+        "A -8.5% del máximo 52s",
+        "RelVol 0.32",
+        "Stop 4.4%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "AVPT",
+      "company": "AvePoint Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Descartado",
+      "score": 53.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 15.9,
+      "entry": 15.9,
+      "stop": 15.62,
+      "target": 16.6,
+      "rr": 2.5,
+      "risk_pct": 1.76,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 12.6 pp vs SPY",
+        "RS 3m 24.5 pp vs SPY",
+        "A -9.2% del máximo 52s",
+        "RelVol 0.40",
+        "Stop 1.8%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "CGON",
+      "company": "Cg Oncology Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 50.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 79.0,
+      "entry": 79.0,
+      "stop": 68.78,
+      "target": 104.55,
+      "rr": 2.5,
+      "risk_pct": 12.94,
+      "shares": null,
+      "earnings": "2027-11-06",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "strong_up_trend_2",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 36.4 pp vs SPY",
+        "RS 3m 2.7 pp vs SPY",
+        "A -15.9% del máximo 52s",
+        "RelVol 2.39",
+        "Stop 12.9%",
+        "R/R 2.5",
+        "earnings en 354 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "PHR",
+      "company": "Phreesia Inc",
+      "sector": "Healthcare",
+      "industry": "Health Information Services",
+      "status": "Descartado",
+      "score": 50.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 12.63,
+      "entry": 12.63,
+      "stop": 12.27,
+      "target": 13.53,
+      "rr": 2.5,
+      "risk_pct": 2.85,
+      "shares": null,
+      "earnings": "2026-12-02",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 16.6 pp vs SPY",
+        "RS 3m 10.4 pp vs SPY",
+        "A -42.0% del máximo 52s",
+        "RelVol 0.49",
+        "Stop 2.9%",
+        "R/R 2.5",
+        "earnings en 15 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "BOBS",
+      "company": "Bob's Discount Furniture Inc",
+      "sector": "Consumer Cyclical",
+      "industry": "Specialty Retail",
+      "status": "Descartado",
+      "score": 47.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 20.22,
+      "entry": 20.22,
+      "stop": 18.56,
+      "target": 24.37,
+      "rr": 2.5,
+      "risk_pct": 8.21,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 38.0 pp vs SPY",
+        "RS 3m 14.3 pp vs SPY",
+        "A -13.9% del máximo 52s",
+        "RelVol 0.51",
+        "Stop 8.2%",
+        "R/R 2.5",
+        "earnings en 353 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "KVYO",
+      "company": "Klaviyo Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Descartado",
+      "score": 37.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 22.25,
+      "entry": 22.25,
+      "stop": 20.39,
+      "target": 26.9,
+      "rr": 2.5,
+      "risk_pct": 8.36,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 31.7 pp vs SPY",
+        "RS 3m 27.0 pp vs SPY",
+        "A -33.3% del máximo 52s",
+        "RelVol 0.64",
+        "Stop 8.4%",
+        "R/R 2.5",
+        "earnings en 352 días",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "swing",
+      "ticker": "PAY",
+      "company": "Paymentus Holdings Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Descartado",
+      "score": 36.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 33.06,
+      "entry": 33.06,
+      "stop": 31.35,
+      "target": 37.34,
+      "rr": 2.5,
+      "risk_pct": 5.17,
+      "shares": null,
+      "earnings": "2027-11-02",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "Setup: none",
+        "RS 1m 9.8 pp vs SPY",
+        "RS 3m -11.7 pp vs SPY",
+        "A -27.0% del máximo 52s",
+        "RelVol 0.23",
+        "Stop 5.2%",
+        "R/R 2.5",
+        "earnings en 350 días",
+        "fuera del universo (precio/volumen/calidad)",
+        "A1: falla alineación (mercado, medias o sector)",
+        "A2: falla fuerza relativa, cercanía a máximos o volumen"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "GEN",
+      "company": "Gen Digital Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Reject",
+      "score": 87.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 29.86,
+      "entry": 29.86,
+      "stop": 25.39,
+      "target": 38.82,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 46.4%",
+        "margen 23.1%",
+        "EPS Q/Q 121.7%",
+        "ventas Q/Q 12.2%",
+        "Deuda/Equity 2.96",
+        "PEG 0.73",
+        "P/FCF 10.1",
+        "EV/EBITDA 9.3",
+        "earnings en 345 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 29.0,
+          "crecimiento": 23.0,
+          "valoración": 20.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "CRBG",
+      "company": "Corebridge Financial Inc",
+      "sector": "Financial",
+      "industry": "Asset Management",
+      "status": "Watch",
+      "score": 86.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 34.92,
+      "entry": 34.92,
+      "stop": 29.68,
+      "target": 45.39,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-02",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 21.7%",
+        "margen 10.9%",
+        "EPS Q/Q 1108.7%",
+        "ventas Q/Q 21.5%",
+        "Deuda/Equity 1.72",
+        "PEG 0.44",
+        "P/FCF 6.3",
+        "EV/EBITDA n/d",
+        "earnings en 350 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 32.0,
+          "crecimiento": 25.0,
+          "valoración": 14.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "PLMR",
+      "company": "Palomar Holdings Inc",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "status": "Reject",
+      "score": 86.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 159.47,
+      "entry": 159.47,
+      "stop": 135.55,
+      "target": 207.31,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 23.3%",
+        "margen 17.6%",
+        "EPS Q/Q 29.1%",
+        "ventas Q/Q 58.0%",
+        "Deuda/Equity 0.32",
+        "PEG 0.82",
+        "P/FCF 9.1",
+        "EV/EBITDA n/d",
+        "earnings en 352 días",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 32.0,
+          "crecimiento": 25.0,
+          "valoración": 14.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "MAX",
+      "company": "MediaAlpha Inc",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "status": "Reject",
+      "score": 85.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 14.56,
+      "entry": 14.56,
+      "stop": 12.38,
+      "target": 18.93,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 1001.9%",
+        "margen 8.3%",
+        "EPS Q/Q 55.7%",
+        "ventas Q/Q 22.6%",
+        "Deuda/Equity 3.41",
+        "PEG 0.22",
+        "P/FCF 15.9",
+        "EV/EBITDA 10.1",
+        "earnings en 345 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 25.0,
+          "crecimiento": 25.0,
+          "valoración": 20.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "REGN",
+      "company": "Regeneron Pharmaceuticals Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Watch",
+      "score": 85.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 956.59,
+      "entry": 956.59,
+      "stop": 813.1,
+      "target": 1243.56,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-30",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 14.9%",
+        "margen 28.5%",
+        "EPS Q/Q 35.5%",
+        "ventas Q/Q 36.3%",
+        "Deuda/Equity 0.08",
+        "PEG 0.67",
+        "P/FCF 25.9",
+        "EV/EBITDA 16.4",
+        "earnings en 347 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 31.0,
+          "crecimiento": 23.0,
+          "valoración": 16.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "QNST",
+      "company": "QuinStreet Inc",
+      "sector": "Communication Services",
+      "industry": "Advertising Agencies",
+      "status": "Reject",
+      "score": 85.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 18.96,
+      "entry": 18.96,
+      "stop": 16.12,
+      "target": 24.65,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 31.7%",
+        "margen 6.6%",
+        "EPS Q/Q 274.6%",
+        "ventas Q/Q 45.8%",
+        "Deuda/Equity 0.22",
+        "PEG 0.42",
+        "P/FCF 8.2",
+        "EV/EBITDA 12.1",
+        "earnings en 352 días",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 31.0,
+          "crecimiento": 25.0,
+          "valoración": 20.0,
+          "tendencia": 9.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "QTWO",
+      "company": "Q2 Holdings Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Watch",
+      "score": 84.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 71.24,
+      "entry": 71.24,
+      "stop": 60.55,
+      "target": 92.61,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 17.2%",
+        "margen 12.7%",
+        "EPS Q/Q 129.8%",
+        "ventas Q/Q 11.9%",
+        "Deuda/Equity 0.06",
+        "PEG 1.23",
+        "P/FCF 18.9",
+        "EV/EBITDA 24.4",
+        "earnings en 345 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 31.0,
+          "crecimiento": 23.0,
+          "valoración": 15.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "MET",
+      "company": "Metlife Inc",
+      "sector": "Financial",
+      "industry": "Insurance - Life",
+      "status": "Watch",
+      "score": 84.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 101.24,
+      "entry": 101.24,
+      "stop": 86.05,
+      "target": 131.61,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 20.0%",
+        "margen 6.0%",
+        "EPS Q/Q 200.5%",
+        "ventas Q/Q 19.4%",
+        "Deuda/Equity 0.99",
+        "PEG 0.76",
+        "P/FCF 4.2",
+        "EV/EBITDA n/d",
+        "earnings en 352 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 30.0,
+          "crecimiento": 25.0,
+          "valoración": 14.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "EXLS",
+      "company": "ExlService Holdings Inc",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "status": "Watch",
+      "score": 82.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 42.98,
+      "entry": 42.98,
+      "stop": 36.53,
+      "target": 55.87,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-27",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 27.7%",
+        "margen 11.1%",
+        "EPS Q/Q 25.3%",
+        "ventas Q/Q 19.7%",
+        "Deuda/Equity 0.66",
+        "PEG 1.01",
+        "P/FCF 23.9",
+        "EV/EBITDA 15.6",
+        "earnings en 344 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 31.0,
+          "crecimiento": 23.0,
+          "valoración": 13.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "TOST",
+      "company": "Toast Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Watch",
+      "score": 81.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 33.93,
+      "entry": 33.93,
+      "stop": 28.84,
+      "target": 44.11,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-03",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 25.6%",
+        "margen 7.7%",
+        "EPS Q/Q 77.4%",
+        "ventas Q/Q 21.3%",
+        "Deuda/Equity 0.00",
+        "PEG 0.63",
+        "P/FCF 32.7",
+        "EV/EBITDA 31.1",
+        "earnings en 351 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 29.0,
+          "crecimiento": 25.0,
+          "valoración": 12.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "ABBV",
+      "company": "Abbvie Inc",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "status": "Watch",
+      "score": 81.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 292.57,
+      "entry": 292.57,
+      "stop": 248.68,
+      "target": 380.34,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-30",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 15221.8%",
+        "margen 15.6%",
+        "EPS Q/Q 2289.7%",
+        "ventas Q/Q 10.3%",
+        "Deuda/Equity n/d",
+        "PEG 0.83",
+        "P/FCF 27.4",
+        "EV/EBITDA 18.6",
+        "earnings en 347 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 27.0,
+          "crecimiento": 23.0,
+          "valoración": 16.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "AVPT",
+      "company": "AvePoint Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Watch",
+      "score": 78.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 15.9,
+      "entry": 15.9,
+      "stop": 13.52,
+      "target": 20.68,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 16.9%",
+        "margen 15.7%",
+        "EPS Q/Q 44.5%",
+        "ventas Q/Q 19.5%",
+        "Deuda/Equity 0.07",
+        "PEG 1.21",
+        "P/FCF 34.6",
+        "EV/EBITDA 45.0",
+        "earnings en 353 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 29.0,
+          "crecimiento": 25.0,
+          "valoración": 9.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "BSY",
+      "company": "Bentley Systems Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Watch",
+      "score": 78.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 44.06,
+      "entry": 44.06,
+      "stop": 37.45,
+      "target": 57.27,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 26.0%",
+        "margen 19.6%",
+        "EPS Q/Q 61.2%",
+        "ventas Q/Q 12.2%",
+        "Deuda/Equity 0.94",
+        "PEG 1.94",
+        "P/FCF 27.2",
+        "EV/EBITDA 29.3",
+        "earnings en 353 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 31.0,
+          "crecimiento": 23.0,
+          "valoración": 9.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "VEEV",
+      "company": "Veeva Systems Inc",
+      "sector": "Healthcare",
+      "industry": "Health Information Services",
+      "status": "Watch",
+      "score": 77.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 293.42,
+      "entry": 293.42,
+      "stop": 249.41,
+      "target": 381.45,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2026-12-03",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 14.4%",
+        "margen 29.3%",
+        "EPS Q/Q 38.7%",
+        "ventas Q/Q 17.6%",
+        "Deuda/Equity 0.02",
+        "PEG 2.27",
+        "P/FCF 29.0",
+        "EV/EBITDA 37.2",
+        "earnings en 16 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 31.0,
+          "crecimiento": 25.0,
+          "valoración": 6.0,
+          "tendencia": 15.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "PAY",
+      "company": "Paymentus Holdings Inc",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "status": "Watch",
+      "score": 76.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 33.06,
+      "entry": 33.06,
+      "stop": 28.1,
+      "target": 42.98,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-02",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 16.0%",
+        "margen 6.7%",
+        "EPS Q/Q 53.5%",
+        "ventas Q/Q 19.8%",
+        "Deuda/Equity 0.01",
+        "PEG 1.19",
+        "P/FCF 24.9",
+        "EV/EBITDA 24.3",
+        "earnings en 350 días",
+        "A1: tendencia o régimen no alineado",
+        "mercado risk-off: solo vigilancia"
+      ],
+      "metrics": {
+        "bloques": {
+          "calidad": 29.0,
+          "crecimiento": 25.0,
+          "valoración": 13.0,
+          "tendencia": 9.0
+        }
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "VIK",
+      "company": "Viking Holdings Ltd",
+      "sector": "Consumer Cyclical",
+      "industry": "Travel Services",
+      "status": "Reject",
+      "score": 72.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 93.48,
+      "entry": 93.48,
+      "stop": 79.46,
+      "target": 121.52,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2026-11-17",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 139.5%",
+        "margen 19.3%",
+        "EPS Q/Q 33.5%",
+        "ventas Q/Q 16.5%",
+        "Deuda/Equity 3.75",
+        "PEG 0.82",
+        "P/FCF 44.2",
+        "EV/EBITDA 22.7",
+        "earnings en 0 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "MUSA",
+      "company": "Murphy USA Inc",
+      "sector": "Consumer Cyclical",
+      "industry": "Specialty Retail",
+      "status": "Reject",
+      "score": 72.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 530.71,
+      "entry": 530.71,
+      "stop": 451.1,
+      "target": 689.92,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 99.0%",
+        "margen 2.9%",
+        "EPS Q/Q 41.9%",
+        "ventas Q/Q 34.8%",
+        "Deuda/Equity 3.50",
+        "PEG 1.81",
+        "P/FCF 14.4",
+        "EV/EBITDA 9.5",
+        "earnings en 345 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "AIN",
+      "company": "Albany International Corp",
+      "sector": "Consumer Cyclical",
+      "industry": "Textile Manufacturing",
+      "status": "Reject",
+      "score": 69.0,
+      "gates": {
+        "A1": false,
+        "A2": true,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 65.89,
+      "entry": 65.89,
+      "stop": 56.0,
+      "target": 85.65,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-10-28",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 11.6%",
+        "margen 6.7%",
+        "EPS Q/Q 143.3%",
+        "ventas Q/Q 33.7%",
+        "Deuda/Equity 0.54",
+        "PEG n/d",
+        "P/FCF 27.1",
+        "EV/EBITDA 8.7",
+        "earnings en 345 días",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "PHR",
+      "company": "Phreesia Inc",
+      "sector": "Healthcare",
+      "industry": "Health Information Services",
+      "status": "Reject",
+      "score": 66.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 12.63,
+      "entry": 12.63,
+      "stop": 10.74,
+      "target": 16.42,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2026-12-02",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 3.1%",
+        "margen 2.1%",
+        "EPS Q/Q 189.6%",
+        "ventas Q/Q 10.4%",
+        "Deuda/Equity 0.18",
+        "PEG 0.12",
+        "P/FCF 10.4",
+        "EV/EBITDA 12.4",
+        "earnings en 15 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "BOBS",
+      "company": "Bob's Discount Furniture Inc",
+      "sector": "Consumer Cyclical",
+      "industry": "Specialty Retail",
+      "status": "Reject",
+      "score": 65.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 20.22,
+      "entry": 20.22,
+      "stop": 17.19,
+      "target": 26.29,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 25.5%",
+        "margen 5.7%",
+        "EPS Q/Q 28.5%",
+        "ventas Q/Q 10.3%",
+        "Deuda/Equity 1.60",
+        "PEG 4.81",
+        "P/FCF 19.6",
+        "EV/EBITDA 11.3",
+        "earnings en 353 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "JHX",
+      "company": "James Hardie Industries plc",
+      "sector": "Basic Materials",
+      "industry": "Building Materials",
+      "status": "Reject",
+      "score": 63.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 26.91,
+      "entry": 26.91,
+      "stop": 22.87,
+      "target": 34.98,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-06",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 5.4%",
+        "margen 6.4%",
+        "EPS Q/Q 366.9%",
+        "ventas Q/Q 10.5%",
+        "Deuda/Equity 0.63",
+        "PEG 1.00",
+        "P/FCF 23.0",
+        "EV/EBITDA 12.9",
+        "earnings en 354 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "KVYO",
+      "company": "Klaviyo Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Reject",
+      "score": 60.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 22.25,
+      "entry": 22.25,
+      "stop": 18.91,
+      "target": 28.93,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 0.8%",
+        "margen 0.5%",
+        "EPS Q/Q 278.6%",
+        "ventas Q/Q 24.6%",
+        "Deuda/Equity 0.16",
+        "PEG 0.78",
+        "P/FCF 27.3",
+        "EV/EBITDA 466.0",
+        "earnings en 352 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "TRUP",
+      "company": "Trupanion Inc",
+      "sector": "Financial",
+      "industry": "Insurance - Property & Casualty",
+      "status": "Reject",
+      "score": 56.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 36.73,
+      "entry": 36.73,
+      "stop": 31.22,
+      "target": 47.75,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 6.9%",
+        "margen 1.7%",
+        "EPS Q/Q 57.3%",
+        "ventas Q/Q 10.5%",
+        "Deuda/Equity 0.26",
+        "PEG 2.39",
+        "P/FCF 18.3",
+        "EV/EBITDA n/d",
+        "earnings en 353 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "DSGR",
+      "company": "Distribution Solutions Group Inc",
+      "sector": "Industrials",
+      "industry": "Industrial Distribution",
+      "status": "Reject",
+      "score": 49.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "tendencia + calidad",
+      "price": 35.01,
+      "entry": 35.01,
+      "stop": 29.76,
+      "target": 45.51,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-05",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 1.7%",
+        "margen 0.5%",
+        "EPS Q/Q 37.7%",
+        "ventas Q/Q 10.8%",
+        "Deuda/Equity 1.31",
+        "PEG n/d",
+        "P/FCF n/d",
+        "EV/EBITDA 13.8",
+        "earnings en 353 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "invest",
+      "ticker": "ALGT",
+      "company": "Allegiant Travel",
+      "sector": "Industrials",
+      "industry": "Airlines",
+      "status": "Reject",
+      "score": 47.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": true
+      },
+      "setup": "tendencia + calidad",
+      "price": 92.01,
+      "entry": 92.01,
+      "stop": 78.21,
+      "target": 119.61,
+      "rr": 2.0,
+      "risk_pct": 15.0,
+      "shares": null,
+      "earnings": "2027-11-04",
+      "last_bar": "2026-11-17T00:00:00",
+      "selected": false,
+      "source": "momentum",
+      "reasons": [
+        "ROE 3.8%",
+        "margen 1.6%",
+        "EPS Q/Q 76.7%",
+        "ventas Q/Q 71.1%",
+        "Deuda/Equity 1.70",
+        "PEG 0.16",
+        "P/FCF n/d",
+        "EV/EBITDA 8.1",
+        "earnings en 352 días",
+        "A2: falla la puerta de calidad",
+        "A1: tendencia o régimen no alineado"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "MF",
+      "company": "MindForge Inc",
+      "sector": "Communication Services",
+      "industry": "Advertising Agencies",
+      "status": "Descartado",
+      "score": 58.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 22.1,
+      "entry": 22.1,
+      "stop": 21.17,
+      "target": 23.96,
+      "rr": 2.0,
+      "risk_pct": 4.21,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T14:25:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 2.94%",
+        "RelVol 0.18",
+        "VWAP 21.88",
+        "PM high 21.17",
+        "PM low 21.17",
+        "Stop 4.21%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 15.0,
+          "fortaleza": 18.0,
+          "entrada": 25.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "TANH",
+      "company": "Tantech Holdings Ltd",
+      "sector": "Consumer Defensive",
+      "industry": "Household & Personal Products",
+      "status": "Descartado",
+      "score": 57.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 43.44,
+      "entry": 43.44,
+      "stop": 39.59,
+      "target": 51.14,
+      "rr": 2.0,
+      "risk_pct": 8.86,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T14:25:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 4.43%",
+        "RelVol 0.11",
+        "VWAP 42.17",
+        "PM high 42.50",
+        "PM low 39.59",
+        "Stop 8.86%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 15.0,
+          "fortaleza": 20.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "HAWK",
+      "company": "HawkEye 360 Inc",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "status": "Descartado",
+      "score": 51.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "reclaim VWAP",
+      "price": 18.53,
+      "entry": 18.53,
+      "stop": 18.35,
+      "target": 18.89,
+      "rr": 2.0,
+      "risk_pct": 0.97,
+      "shares": null,
+      "earnings": "2026-11-12",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap -0.49%",
+        "RelVol 3.21",
+        "VWAP 18.50",
+        "PM high 18.85",
+        "PM low 18.35",
+        "Stop 0.97%",
+        "R/R 2.0",
+        "earnings hace 5 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 8.0,
+          "fortaleza": 18.0,
+          "entrada": 25.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "EGG",
+      "company": "Enigmatig Ltd",
+      "sector": "Industrials",
+      "industry": "Consulting Services",
+      "status": "Descartado",
+      "score": 50.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 7.16,
+      "entry": 7.16,
+      "stop": 6.1,
+      "target": 9.28,
+      "rr": 2.0,
+      "risk_pct": 14.8,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T13:40:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap -9.76%",
+        "RelVol 0.12",
+        "VWAP 6.76",
+        "PM high 6.71",
+        "PM low 6.10",
+        "Stop 14.80%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 15.0,
+          "fortaleza": 13.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "FENC",
+      "company": "Fennec Pharmaceuticals Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 49.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 13.23,
+      "entry": 13.23,
+      "stop": 12.54,
+      "target": 14.61,
+      "rr": 2.0,
+      "risk_pct": 5.22,
+      "shares": null,
+      "earnings": "2026-11-12",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 0.55%",
+        "RelVol 3.87",
+        "VWAP 13.24",
+        "PM high 12.77",
+        "PM low 12.54",
+        "Stop 5.22%",
+        "R/R 2.0",
+        "earnings hace 5 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 7.0,
+          "fortaleza": 23.0,
+          "entrada": 19.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "BGIN",
+      "company": "Bgin Blockchain Ltd",
+      "sector": "Technology",
+      "industry": "Computer Hardware",
+      "status": "Descartado",
+      "score": 45.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 5.27,
+      "entry": 5.27,
+      "stop": 4.85,
+      "target": 6.11,
+      "rr": 2.0,
+      "risk_pct": 7.97,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T14:25:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap -8.78%",
+        "RelVol 1.36",
+        "VWAP 5.16",
+        "PM high 5.00",
+        "PM low 4.85",
+        "Stop 7.97%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 15.0,
+          "fortaleza": 8.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "NCT",
+      "company": "Intercont (Cayman) Ltd",
+      "sector": "Industrials",
+      "industry": "Marine Shipping",
+      "status": "Descartado",
+      "score": 45.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 9.4,
+      "entry": 9.4,
+      "stop": 7.95,
+      "target": 12.3,
+      "rr": 2.0,
+      "risk_pct": 15.43,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T14:25:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "gap anómalo (>50%): posible split o dato corrupto",
+        "Gap 1045.40%",
+        "RelVol 0.14",
+        "VWAP 8.83",
+        "PM high 8.35",
+        "PM low 7.95",
+        "Stop 15.43%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 15.0,
+          "fortaleza": 8.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "VIK",
+      "company": "Viking Holdings Ltd",
+      "sector": "Consumer Cyclical",
+      "industry": "Travel Services",
+      "status": "Descartado",
+      "score": 45.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 93.48,
+      "entry": 93.48,
+      "stop": 85.43,
+      "target": 109.58,
+      "rr": 2.0,
+      "risk_pct": 8.61,
+      "shares": null,
+      "earnings": "2026-11-17",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "volumen_climatico",
+      "reasons": [
+        "Gap -1.42%",
+        "RelVol 1.94",
+        "VWAP 91.89",
+        "PM high 91.43",
+        "PM low 85.43",
+        "Stop 8.61%",
+        "R/R 2.0",
+        "earnings en 0 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 15.0,
+          "fortaleza": 8.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "PLBL",
+      "company": "Polibeli Group Ltd",
+      "sector": "Consumer Cyclical",
+      "industry": "Department Stores",
+      "status": "Descartado",
+      "score": 39.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 7.53,
+      "entry": 7.53,
+      "stop": 7.34,
+      "target": 7.91,
+      "rr": 2.0,
+      "risk_pct": 2.52,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap -0.68%",
+        "RelVol 0.95",
+        "VWAP 7.61",
+        "PM high 7.39",
+        "PM low 7.34",
+        "Stop 2.52%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 7.0,
+          "fortaleza": 8.0,
+          "entrada": 24.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "CARL",
+      "company": "Carlsmed Inc",
+      "sector": "Healthcare",
+      "industry": "Health Information Services",
+      "status": "Descartado",
+      "score": 37.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "breakout premarket",
+      "price": 17.93,
+      "entry": 17.93,
+      "stop": 17.2,
+      "target": 19.39,
+      "rr": 2.0,
+      "risk_pct": 4.07,
+      "shares": null,
+      "earnings": "2026-11-10",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap -0.86%",
+        "RelVol 2.32",
+        "VWAP 18.10",
+        "PM high 17.20",
+        "PM low 17.20",
+        "Stop 4.07%",
+        "R/R 2.0",
+        "earnings hace 7 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {
+          "alineación": 7.0,
+          "fortaleza": 8.0,
+          "entrada": 22.0
+        }
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "SLS",
+      "company": "SELLAS Life Sciences Group Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 37.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 19.56,
+      "entry": 19.56,
+      "stop": 7.51,
+      "target": 43.66,
+      "rr": 2.0,
+      "risk_pct": 61.61,
+      "shares": null,
+      "earnings": "2026-11-12",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "gap anómalo (>50%): posible split o dato corrupto",
+        "Gap 221.29%",
+        "RelVol 50.02",
+        "VWAP 20.84",
+        "PM high 34.00",
+        "PM low 7.51",
+        "Stop 61.61%",
+        "R/R 2.0",
+        "earnings hace 5 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "RETO",
+      "company": "ReTo Eco-Solutions Inc",
+      "sector": "Basic Materials",
+      "industry": "Building Materials",
+      "status": "Descartado",
+      "score": 23.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 5.27,
+      "entry": 5.27,
+      "stop": 5.05,
+      "target": 5.71,
+      "rr": 2.0,
+      "risk_pct": 4.17,
+      "shares": null,
+      "earnings": null,
+      "last_bar": "2026-11-17T14:10:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 7.56%",
+        "RelVol 0.01",
+        "VWAP 5.39",
+        "PM high 5.77",
+        "PM low 5.05",
+        "Stop 4.17%",
+        "R/R 2.0",
+        "earnings desconocido",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "MOD",
+      "company": "Modexus Solutions",
+      "sector": "Industrials",
+      "industry": "Building Products & Equipment",
+      "status": "Descartado",
+      "score": 12.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 127.71,
+      "entry": 127.71,
+      "stop": 126.03,
+      "target": 131.07,
+      "rr": 2.0,
+      "risk_pct": 1.32,
+      "shares": null,
+      "earnings": "2027-11-03",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 1.97%",
+        "RelVol 0.78",
+        "VWAP 129.61",
+        "PM high 133.50",
+        "PM low 126.03",
+        "Stop 1.32%",
+        "R/R 2.0",
+        "earnings en 351 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "LFTO",
+      "company": "Liftoff Mobile Inc",
+      "sector": "Communication Services",
+      "industry": "Advertising Agencies",
+      "status": "Descartado",
+      "score": 4.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 22.79,
+      "entry": 22.79,
+      "stop": 21.13,
+      "target": 26.11,
+      "rr": 2.0,
+      "risk_pct": 7.28,
+      "shares": null,
+      "earnings": "2026-11-12",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 1.64%",
+        "RelVol 1.67",
+        "VWAP 23.15",
+        "PM high 24.56",
+        "PM low 24.23",
+        "Stop 7.28%",
+        "R/R 2.0",
+        "earnings hace 5 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "PUBM",
+      "company": "PubMatic Inc",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "status": "Descartado",
+      "score": 4.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 20.55,
+      "entry": 20.55,
+      "stop": 19.17,
+      "target": 23.31,
+      "rr": 2.0,
+      "risk_pct": 6.72,
+      "shares": null,
+      "earnings": "2027-11-09",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap -1.21%",
+        "RelVol 1.00",
+        "VWAP 20.60",
+        "PM high 20.71",
+        "PM low 20.70",
+        "Stop 6.72%",
+        "R/R 2.0",
+        "earnings en 357 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    },
+    {
+      "mode": "day",
+      "ticker": "OBIO",
+      "company": "Orchestra BioMed Holdings Inc",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "status": "Descartado",
+      "score": 4.0,
+      "gates": {
+        "A1": false,
+        "A2": false,
+        "A3": false
+      },
+      "setup": "none",
+      "price": 7.06,
+      "entry": 7.06,
+      "stop": 6.55,
+      "target": 8.08,
+      "rr": 2.0,
+      "risk_pct": 7.22,
+      "shares": null,
+      "earnings": "2026-11-10",
+      "last_bar": "2026-11-17T14:30:00-05:00",
+      "selected": false,
+      "source": "ganadores_semanales",
+      "reasons": [
+        "Gap 0.56%",
+        "RelVol 1.05",
+        "VWAP 7.20",
+        "PM high 7.17",
+        "PM low 7.14",
+        "Stop 7.22%",
+        "R/R 2.0",
+        "earnings hace 7 días",
+        "A1: régimen o VWAP no alineado",
+        "A2: gap, volumen relativo o setup insuficiente",
+        "fuera del universo intradía (precio/volumen)"
+      ],
+      "metrics": {
+        "bloques": {}
+      }
+    }
+  ]
+}

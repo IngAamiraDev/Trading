@@ -1,0 +1,41 @@
+{
+  "run_id": "17942dce-53b9-429b-9704-090cd25629ad",
+  "generated_at": "2026-11-18T12:54:00.600638",
+  "trading_date": "2026-11-18",
+  "regime": "risk_off",
+  "trend": "lateral",
+  "vix": 24.030000686645508,
+  "capital": 10000.0,
+  "modes": {
+    "swing": {
+      "candidates": 8,
+      "actionable": 0,
+      "watchlist": 0,
+      "errors": [],
+      "notes": [
+        "Se eliminaron 3 duplicados entre presets."
+      ]
+    },
+    "invest": {
+      "candidates": 8,
+      "actionable": 0,
+      "watchlist": 3,
+      "errors": [],
+      "notes": []
+    },
+    "day": {
+      "candidates": 8,
+      "actionable": 0,
+      "watchlist": 0,
+      "errors": [],
+      "notes": [
+        "El preset strong_up_trend_1 no devolvió resultados."
+      ]
+    }
+  },
+  "errors": [],
+  "notes": [
+    "Se eliminaron 3 duplicados entre presets.",
+    "El preset strong_up_trend_1 no devolvió resultados."
+  ]
+}

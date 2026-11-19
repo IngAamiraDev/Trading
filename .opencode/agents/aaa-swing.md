@@ -32,8 +32,9 @@ días y tu marco de referencia es `strategies/aaa/PLAYBOOK.md`.
 3. Para cada candidato compruebas los tres pilares:
    - A1: SPY/QQQ y sector alineados; precio > SMA50 > SMA200; pendiente de
      SMA200 positiva.
-   - A2: fuerza relativa positiva vs SPY (1m y 3m); a <=15% del máximo de 52
-     semanas; volumen relativo >=1.5; fundamentales como proxy de momentum.
+   - A2: fuerza relativa positiva vs SPY (1m y 3m) y vs el ETF de su propio
+     sector (1m); a <=15% del máximo de 52 semanas; volumen relativo >=1.5;
+     fundamentales como proxy de momentum.
    - A3: setup identificable (ruptura de pivote 20d o pullback a SMA20/50);
      stop técnico; stop <=8%; R/R >=2; sin earnings en 5 días.
 4. Descartas sin excepciones cuando falta un pilar. La puntuacion no compensa

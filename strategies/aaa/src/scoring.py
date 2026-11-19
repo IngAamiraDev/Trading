@@ -150,7 +150,14 @@ def sector_context(
     spy: pd.DataFrame | None,
 ) -> dict[str, Any]:
     etf = SECTOR_ETFS.get(sector)
-    context: dict[str, Any] = {"etf": etf, "aligned": None, "rs21": None, "note": ""}
+    context: dict[str, Any] = {
+        "etf": etf,
+        "aligned": None,
+        "rs21": None,
+        "state": None,
+        "note": "",
+        "frame": None,
+    }
     if not etf:
         context["note"] = "sector sin ETF mapeado"
         return context
@@ -170,9 +177,60 @@ def sector_context(
         and close > fast
         and (slow is None or close > slow)
     )
+    if context["aligned"]:
+        context["state"] = "fuerte"
+    elif close is not None and fast is not None and close < fast:
+        context["state"] = "débil"
+    elif close is not None and fast is not None:
+        context["state"] = "lateral"
     if spy is not None:
         context["rs21"] = relative_strength(frame["Close"], spy["Close"], 21)
+    context["frame"] = frame
     return context
+
+
+MAX_DAILY_MOVE_PCT = 100.0
+
+
+def _has_extreme_move(close: pd.Series, periods: int = 21) -> bool:
+    """True si la serie dio un salto extremo en un dia (split o dato corrupto).
+
+    Un salto asi hace que la fuerza relativa no sea comparable: mejor no
+    informar el numero que informar uno falso.
+    """
+    if close is None or len(close) < periods + 1:
+        return False
+    window = close.iloc[-(periods + 1) :]
+    moves = window.pct_change().dropna()
+    if moves.empty:
+        return False
+    return bool(moves.abs().max() * 100.0 > MAX_DAILY_MOVE_PCT)
+
+
+def sector_relative_strength(
+    daily: pd.DataFrame | None, sector: dict[str, Any]
+) -> tuple[float | None, float | None]:
+    """Fuerza relativa de la accion contra el ETF de su sector (1m y 3m).
+
+    Devuelve (None, None) si el run no trae el frame del sector o si la serie
+    diaria de la accion tiene un salto extremo (split o dato corrupto), en cuyo
+    caso la comparacion no es fiable.
+    """
+    frame = sector.get("frame")
+    if (
+        daily is None
+        or not isinstance(frame, pd.DataFrame)
+        or "Close" not in frame
+        or "Close" not in daily
+    ):
+        return None, None
+    if _has_extreme_move(daily["Close"]):
+        return None, None
+    sector_close = frame["Close"].reindex(daily.index).ffill()
+    return (
+        relative_strength(daily["Close"], sector_close, 21),
+        relative_strength(daily["Close"], sector_close, 63),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -202,7 +260,8 @@ def _daily_features(
     sma200_slope = slope_pct(sma200_series, 20) if sma200_series is not None else None
 
     rs21 = rs63 = None
-    if spy is not None and "Close" in spy:
+    extreme_move = _has_extreme_move(close_series)
+    if spy is not None and "Close" in spy and not extreme_move:
         aligned_spy = spy["Close"].reindex(close_series.index).ffill()
         rs21 = relative_strength(close_series, aligned_spy, 21)
         rs63 = relative_strength(close_series, aligned_spy, 63)
@@ -225,6 +284,7 @@ def _daily_features(
         "dist_high": pct_from_high(close, high52),
         "rs21": rs21,
         "rs63": rs63,
+        "extreme_move": extreme_move,
         "pivot20": pivot,
         "low10": low10,
         "avg_volume50": avg_volume(daily, 50),
@@ -350,9 +410,18 @@ def evaluate_swing(
         and _gt(features["sma200_slope"], 0)
         and sector.get("aligned") is not False
     )
+
+    # Pregunta 3: la accion contra su propio sector (no solo contra SPY).
+    rs_sector21, rs_sector63 = sector_relative_strength(daily, sector)
+    require_sector_rs = bool(cfg.get("require_sector_rs", True))
+    sector_rs_ok = (
+        not require_sector_rs or rs_sector21 is None or rs_sector21 > 0
+    )
+
     a2 = (
         _gt(features["rs21"], 0)
         and _gt(features["rs63"], 0)
+        and sector_rs_ok
         and features["dist_high"] is not None
         and features["dist_high"] >= -max_dist
         and _gt(rel_vol, min_relvol - 1e-9)
@@ -396,6 +465,10 @@ def evaluate_swing(
             strength += 2
         if rel_vol >= 3:
             strength += 2
+    if _gt(rs_sector21, 0):
+        strength += 5
+        if rs_sector21 > 5:
+            strength += 2
     if _gt(fundamentals.get("eps_qoq"), 0):
         strength += 4
     if _gt(fundamentals.get("sales_qoq"), 0):
@@ -426,18 +499,34 @@ def evaluate_swing(
 
     # Motivos
     candidate.reasons.append(f"Setup: {setup}" + (" (extendido)" if extended else ""))
+    if sector.get("etf"):
+        candidate.reasons.append(
+            f"Sector {sector['etf']}: {sector.get('state') or 'sin dato'} | "
+            f"RS 1m {_fmt(sector.get('rs21'), 1, ' pp')} vs SPY"
+        )
     candidate.reasons.append(f"RS 1m {_fmt(features['rs21'], 1, ' pp')} vs SPY")
     candidate.reasons.append(f"RS 3m {_fmt(features['rs63'], 1, ' pp')} vs SPY")
+    if sector.get("etf"):
+        candidate.reasons.append(
+            f"RS 1m {_fmt(rs_sector21, 1, ' pp')} vs sector"
+            f" | 3m {_fmt(rs_sector63, 1, ' pp')} vs sector"
+        )
     candidate.reasons.append(f"A {_fmt(dist, 1, '%')} del máximo 52s")
     candidate.reasons.append(f"RelVol {_fmt(rel_vol, 2)}")
     candidate.reasons.append(f"Stop {_fmt(risk_pct, 1, '%')} | R/R {_fmt(candidate.rr, 1)}")
     candidate.reasons.append(earnings_note)
+    if features.get("extreme_move"):
+        candidate.reasons.append(
+            "serie diaria con salto extremo (split o dato corrupto): RS no comparable"
+        )
     if not universe_ok:
         candidate.reasons.append("fuera del universo (precio/volumen/calidad)")
     if not a1:
         candidate.reasons.append("A1: falla alineación (mercado, medias o sector)")
     if not a2:
-        candidate.reasons.append("A2: falla fuerza relativa, cercanía a máximos o volumen")
+        candidate.reasons.append(
+            "A2: falla fuerza relativa (vs SPY o sector), cercanía a máximos o volumen"
+        )
 
     min_score = float(cfg.get("min_score", 70.0))
     watch_score = float(cfg.get("watch_score", 55.0))
@@ -462,7 +551,11 @@ def evaluate_swing(
         "rsi": features["rsi14"],
         "sector_etf": sector.get("etf"),
         "sector_aligned": sector.get("aligned"),
+        "sector_state": sector.get("state"),
         "sector_rs21": sector.get("rs21"),
+        "rs_sector21": rs_sector21,
+        "rs_sector63": rs_sector63,
+        "extreme_move": bool(features.get("extreme_move")),
         "pivot20": pivot,
         "low10": low10,
         "extended": extended,
@@ -489,6 +582,7 @@ def evaluate_invest(
     fundamentals: dict[str, Any],
     config: dict[str, Any],
     regime: Regime,
+    sector: dict[str, Any] | None = None,
 ) -> Candidate:
     cfg = config.get("invest", {})
     universe = config.get("universe", {})
@@ -555,12 +649,16 @@ def evaluate_invest(
     )
     candidate.earnings = fundamentals.get("earnings")
 
+    sector = sector or {}
+    rs_sector21, rs_sector63 = sector_relative_strength(daily, sector)
+
     trend_ok = (
         regime.label != "risk_off"
         and close > (features["sma200"] or math.inf)
         and (features["sma50"] or 0) > (features["sma200"] or math.inf)
         and features["dist_high"] is not None
         and features["dist_high"] >= -float(cfg.get("max_distance_52w_high_pct", 25))
+        and sector.get("aligned") is not False
     )
     candidate.gates = {
         "A1": bool(trend_ok),
@@ -621,6 +719,15 @@ def evaluate_invest(
     candidate.reasons.append(f"EPS Q/Q {_fmt(eps_qoq, 1, '%')} | ventas Q/Q {_fmt(sales_qoq, 1, '%')}")
     candidate.reasons.append(f"Deuda/Equity {_fmt(debt, 2)}")
     candidate.reasons.append(f"PEG {_fmt(peg, 2)} | P/FCF {_fmt(pfcf, 1)} | EV/EBITDA {_fmt(ev_ebitda, 1)}")
+    if sector.get("etf"):
+        candidate.reasons.append(
+            f"Sector {sector['etf']}: {sector.get('state') or 'sin dato'} | "
+            f"RS 1m {_fmt(sector.get('rs21'), 1, ' pp')} vs SPY"
+        )
+        candidate.reasons.append(
+            f"RS 1m {_fmt(rs_sector21, 1, ' pp')} vs sector"
+            f" | 3m {_fmt(rs_sector63, 1, ' pp')} vs sector"
+        )
     candidate.reasons.append(earnings_note)
     if not quality_ok:
         candidate.reasons.append("A2: falla la puerta de calidad")
@@ -661,6 +768,13 @@ def evaluate_invest(
         "rs63": features["rs63"],
         "dist_high": features["dist_high"],
         "market_cap": market_cap,
+        "sector_etf": sector.get("etf"),
+        "sector_aligned": sector.get("aligned"),
+        "sector_state": sector.get("state"),
+        "sector_rs21": sector.get("rs21"),
+        "rs_sector21": rs_sector21,
+        "rs_sector63": rs_sector63,
+        "extreme_move": bool(features.get("extreme_move")),
         "bloques": {
             "calidad": _clamp(quality, 40),
             "crecimiento": _clamp(growth, 25),
@@ -720,6 +834,7 @@ def evaluate_day(
     fundamentals: dict[str, Any],
     config: dict[str, Any],
     regime: Regime,
+    sector: dict[str, Any] | None = None,
 ) -> Candidate:
     cfg = config.get("day", {})
     candidate = Candidate(
@@ -733,6 +848,8 @@ def evaluate_day(
     if daily is None or len(daily) < 20:
         candidate.reasons.append("sin datos diarios suficientes")
         return candidate
+    sector = sector or {}
+    rs_sector21, rs_sector63 = sector_relative_strength(daily, sector)
     session = _session_slice(intraday)
     if session is None:
         candidate.reasons.append("sin barras intradía suficientes")
@@ -897,6 +1014,15 @@ def evaluate_day(
     candidate.reasons.append(f"Gap {_fmt(gap_pct, 2, '%')} | RelVol {_fmt(rel_vol, 2)}")
     candidate.reasons.append(f"VWAP {_fmt(vwap, 2)} | PM high {_fmt(pre_high, 2)} | PM low {_fmt(pre_low, 2)}")
     candidate.reasons.append(f"Stop {_fmt(risk_pct, 2, '%')} | R/R {_fmt(candidate.rr, 1)}")
+    if sector.get("etf"):
+        candidate.reasons.append(
+            f"Sector {sector['etf']}: {sector.get('state') or 'sin dato'} | "
+            f"RS 1m {_fmt(sector.get('rs21'), 1, ' pp')} vs SPY"
+        )
+    if _has_extreme_move(daily["Close"]):
+        candidate.reasons.append(
+            "serie diaria con salto extremo (split o dato corrupto): RS no comparable"
+        )
     candidate.reasons.append(earnings_note)
     if not a1:
         candidate.reasons.append("A1: régimen o VWAP no alineado")
@@ -932,6 +1058,13 @@ def evaluate_day(
         "day_low": day_low,
         "atr": atr14,
         "change_today": change_today,
+        "sector_etf": sector.get("etf"),
+        "sector_aligned": sector.get("aligned"),
+        "sector_state": sector.get("state"),
+        "sector_rs21": sector.get("rs21"),
+        "rs_sector21": rs_sector21,
+        "rs_sector63": rs_sector63,
+        "extreme_move": bool(_has_extreme_move(daily["Close"])) if daily is not None else False,
         "bloques": {
             "alineación": _clamp(alignment, 25),
             "fortaleza": _clamp(strength, 45),

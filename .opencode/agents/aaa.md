@@ -59,8 +59,9 @@ de screening y planificación para acciones de EE. UU., no un broker.
 
 Lee el playbook y la configuración antes de proponer nada. No inventes reglas
 del método privado de El Club de Inversionistas (CDI). El sistema es una
-aproximación configurable a sus tres pilares públicos: alineación, fortaleza
-relativa/momentum y entrada con riesgo favorable.
+aproximación configurable a sus tres pilares públicos, leídos como tres
+preguntas en orden: cómo está el mercado (alcista, lateral o bajista), cómo está
+el sector de la acción y cómo se comporta la acción frente a su propio sector.
 
 ## Flujo
 

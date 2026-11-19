@@ -1,7 +1,11 @@
 # AAA Scanner
 
 Motor de screening y planificación para acciones de EE. UU. basado en los tres
-pilares AAA-CDI: alineación, fortaleza relativa/momentum y asimetría/riesgo.
+pilares AAA-CDI, leídos como tres preguntas en orden:
+
+1. ¿Cómo está el mercado: alcista, bajista o lateral?
+2. ¿Cómo está el sector o grupo al que pertenece la acción?
+3. ¿Cómo se comporta la acción frente a su propio sector?
 
 Es una **aproximación configurable** a los tres pilares públicos de El Club de
 Inversionistas (CDI). No reproduce reglas privadas del taller ni ejecuta
@@ -39,8 +43,31 @@ Los reportes se guardan en `reports/YYYY-MM-DD/`:
 
 - `plan.md` — régimen, riesgo, watchlists y descartes.
 - `candidates.csv` — una fila por candidato.
+- `candidates.json` — payload estable (`run_id`, régimen con `trend`, índices y
+  candidatos con motivos/métricas, incluida la fuerza relativa frente al ETF
+  del sector) que consume la web.
 - `watchlist_tradingview.txt` — tickers accionables y en vigilancia.
-- `summary.json` — conteos y errores del escaneo.
+- `summary.json` — conteos, errores y el mismo `run_id` del JSON.
+
+## Web
+
+`aaa-web/` es la mesa de señales (Next.js + Postgres). El motor no habla con la
+base de datos: escribe `candidates.json` y `scripts/aaa_web_sync/sync.py` lo
+publica en `POST /api/ingest` de forma idempotente por `run_id`.
+
+```bash
+python scripts/aaa_web_sync/sync.py --file reports/2026-11-17/candidates.json
+```
+
+Para ejecutar el plan y publicarlo en un paso:
+
+```bash
+AAA_CAPITAL=10000 ./scripts/aaa_web_sync/daily.sh
+```
+
+Detalles de despliegue (Vercel + Neon), variables y migraciones en
+`aaa-web/README.md`; cron y sincronización en
+`scripts/aaa_web_sync/README.md`.
 
 ## Agentes y comandos
 

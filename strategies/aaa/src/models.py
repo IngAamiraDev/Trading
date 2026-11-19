@@ -23,6 +23,24 @@ class Regime:
         return self.label in {"risk_on", "neutral"}
 
     @property
+    def trend(self) -> str:
+        """Direccion del mercado: alcista, lateral o bajista.
+
+        Se lee de la estructura de los indices (cierre vs SMA50/SMA200), no del
+        VIX: el VIX decide el riesgo permitido, no la direccion.
+        """
+        valid = [data for data in self.indices.values() if "error" not in data]
+        if not valid:
+            return "sin datos"
+        above_fast = [bool(data.get("above_fast")) for data in valid]
+        above_slow = [bool(data.get("above_slow")) for data in valid]
+        if all(above_fast) and all(above_slow):
+            return "alcista"
+        if not any(above_slow):
+            return "bajista"
+        return "lateral"
+
+    @property
     def size_multiplier(self) -> float:
         if self.label == "risk_on":
             return 1.0
@@ -86,6 +104,37 @@ class Candidate:
             "last_bar": self.last_bar,
             "source": self.source,
             "reasons": " | ".join(self.reasons),
+        }
+
+    def to_payload(self) -> dict[str, Any]:
+        """Version serializable para la web (conserva motivos y metricas)."""
+        return {
+            "mode": self.mode,
+            "ticker": self.ticker,
+            "company": self.company,
+            "sector": self.sector,
+            "industry": self.industry,
+            "status": self.status,
+            "score": round(self.score, 1),
+            "gates": {
+                "A1": self.gates.get("A1"),
+                "A2": self.gates.get("A2"),
+                "A3": self.gates.get("A3"),
+            },
+            "setup": self.setup,
+            "price": _round(self.price),
+            "entry": _round(self.entry),
+            "stop": _round(self.stop),
+            "target": _round(self.target),
+            "rr": _round(self.rr, 2),
+            "risk_pct": _round(self.risk_pct, 2),
+            "shares": self.shares,
+            "earnings": self.earnings,
+            "last_bar": self.last_bar,
+            "selected": bool(self.selected),
+            "source": self.source,
+            "reasons": list(self.reasons),
+            "metrics": self.metrics,
         }
 
 
